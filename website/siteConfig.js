@@ -73,7 +73,7 @@ const siteConfig = {
   */
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © ${new Date().getFullYear()} Shaojie, <a href="http://www.beian.miit.gov.cn" target="_blank">粤ICP备2020074179号</a>All rights reserved.`,
+  copyright: `Copyright © ${new Date().getFullYear()} Lishaojie<a style="color: hsla(0,0%,100%,.4); margin: 0 4px;" href="http://www.beian.miit.gov.cn" target="_blank">粤ICP备2020074179号</a>All rights reserved.`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
