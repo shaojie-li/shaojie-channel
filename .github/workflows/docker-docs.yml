@@ -32,11 +32,8 @@ jobs:
               with:
                   node-version: "12.x"
 
-            - name: To website dir
-              run: cd website
-            
             - name: Install npm dependencies
-              run: ls && pwd && npm install
+              run: cd website && ls && pwd && npm install
 
             - name: Run build task
               run: npm run build
