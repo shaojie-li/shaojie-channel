@@ -33,7 +33,7 @@ jobs:
                   node-version: "12.x"
 
             - name: To website dir
-              run: cd website
+              run: cd ./website
             
             - name: Install npm dependencies
               run: npm install
