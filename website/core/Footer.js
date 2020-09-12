@@ -41,7 +41,7 @@ class Footer extends React.Component {
           </div>
         </section>
 
-        <section className="copyright" dangerouslySetInnerHTML={{__html: this.props.config.copyright}} />{" "}
+        <section className="copyright" dangerouslySetInnerHTML={{__html: this.props.config.copyright}} />
       </footer>
     );
   }
