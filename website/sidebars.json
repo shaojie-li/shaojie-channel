@@ -1,0 +1,9 @@
+{
+  "docs": {
+    "Docker": ["docker/installation", "docker/command", "docker/images", "docker/volume"],
+    "Waiting": ["waiting"]
+  },
+  "docs-other": {
+    "First Category": ["doc4", "doc5"]
+  }
+}

@@ -1,0 +1,49 @@
+# This is a basic workflow to help you get started with Actions
+
+# name字段是 workflow 的名称。如果省略该字段，默认为当前 workflow 的文件名。
+name: Actions for my docker document
+
+# on字段指定触发 workflow 的条件，通常是某些事件。
+# on字段也可以是事件的数组 -- on: [push, pull_request]
+# events but only for the master branch
+on:
+    push:
+        branches: [master]
+    # pull_request:
+    # branches: [ master ]
+
+# GitHub Actions 的配置文件叫做 workflow 文件，存放在代码仓库的.github/workflows目录
+# workflow 文件采用 YAML 格式，文件名可以任意取，但是后缀名统一为.yml，比如foo.yml。
+# 一个库可以有多个 workflow 文件。GitHub 只要发现.github/workflows目录里面有.yml文件，就会自动运行该文件。
+jobs:
+    # "build" 为自定义的任务名称，里面的name为自定义的任务描述
+    build:
+        # runs-on字段指定运行所需要的虚拟机环境。它是必填字段。目前可用的虚拟机如下
+        runs-on: ubuntu-latest
+
+        # Steps represent a sequence of tasks that will be executed as part of the job
+        steps:
+            # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: Install nodejs
+              uses: actions/setup-node@v1 # 安装nodejs，版本指定10
+              with:
+                  node-version: "12.x"
+
+            - name: Install npm dependencies
+              run: npm install
+
+            - name: Run build task
+              run: npm run build
+
+            - name: Deploy to Server
+              uses: easingthemes/ssh-deploy@v2.1.1
+              env:
+                  SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+                  ARGS: "-rltgoDzvO --delete"
+                  SOURCE: "website/build"
+                  REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+                  REMOTE_USER: ${{ secrets.REMOTE_USER }}
+                  TARGET: ${{ secrets.REMOTE_TARGET }}
